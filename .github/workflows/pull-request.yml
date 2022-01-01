@@ -1,0 +1,9 @@
+name: On pull request
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  specs:
+    uses: singularities/bso/.github/workflows/specs.yml@main
