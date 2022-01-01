@@ -13,6 +13,7 @@ jobs:
     uses: singularities/bso/.github/workflows/specs.yml@main
   build-and-push-image:
     runs-on: ubuntu-latest
+    needs: specs
     permissions:
       contents: read
       packages: write
@@ -41,4 +42,16 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=registry,ref=singularities/bso:main
+          cache-to: type=inline
+  webhook:
+    runs-on: ubuntu-latest
+    needs: build-and-push-image
+
+    steps:
+      - name: Invoke deployment hook
+        uses: joelwmale/webhook-action@2.1.0
+        with:
+          url: ${{ secrets.WEBHOOK_URL }}
+          body: '{"deploy":{"branch":"${{ github.ref_name }}","commit":{"sha":"${{ github.sha }}","message":"deploy"}}}'
 
