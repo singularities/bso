@@ -46,3 +46,9 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
+
+# Dependency missing in Ruby 3.1
+# https://github.com/mikel/mail/pull/1439
+gem 'net-smtp', require: false
+gem 'net-imap', require: false
+gem 'net-pop', require: false
