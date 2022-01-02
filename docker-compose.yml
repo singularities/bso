@@ -1,0 +1,24 @@
+version: '2'
+services:
+  app:
+    tty: true
+    stdin_open: true
+    image: ghcr.io/singularities/bso:main
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - .:/app
+    entrypoint: bash -c "cd /app && rm -f tmp/pids/server.pid && ./bin/setup && bundle exec rails server -u puma -p 3000 -b '0.0.0.0'"
+    environment:
+      DATABASE_URL: postgres://postgres:password@db:5432?pool=10
+      DEFAULT_HOST: http://localhost
+      RAILS_LOG_TO_STDOUT: 1
+      SECRET_KEY_BASE: 'secret'
+    depends_on:
+      - db
+  db:
+    image: postgres:14.1
+    volumes:
+      - ./tmp/pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
