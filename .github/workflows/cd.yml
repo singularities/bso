@@ -17,10 +17,63 @@ jobs:
     permissions:
       contents: read
       packages: write
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+
+      - name: setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1.0
+          bundler-cache: true
+
+      - name: setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12.22.7
+
+      - name: install yarn
+        run: npm i -g yarn@1.22.10
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Cache yarn cache directory
+        uses: actions/cache@v2.1.5
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Cache node_modules
+        uses: actions/cache@v2.1.5
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+      - name: yarn install
+        run: yarn install --frozen-lockfile
+
+      - name: asset cache
+        uses: actions/cache@v2.1.5
+        with:
+          path: |
+            public/assets
+          key: asset-cache-${{ runner.os }}-${{ github.ref }}-${{ github.sha }}
+          restore-keys: |
+            asset-cache-${{ runner.os }}-${{ github.ref }}-${{ github.sha }}
+            asset-cache-${{ runner.os }}-${{ github.ref }}-
+            asset-cache-${{ runner.os }}-
+      - name: assets precompile
+        run: bundle exec rake assets:precompile --trace
+
+      - name: cache bundle.js
+        uses: actions/cache@v2.1.5
+        with:
+          path: ./public/packs
+          key: bundle-js-${{ github.sha }}
 
       - name: Log in to the Container registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
