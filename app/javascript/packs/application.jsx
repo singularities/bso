@@ -15,4 +15,25 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-console.log('Hello World from Webpacker')
+import React from 'react'
+import ReactDOM from 'react-dom'
+import PropTypes from 'prop-types'
+
+const App = props => (
+  <div>Hello {props.name}!</div>
+)
+
+App.defaultProps = {
+  name: 'David'
+}
+
+App.propTypes = {
+  name: PropTypes.string
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  ReactDOM.render(
+    <App name="React" />,
+    document.body.appendChild(document.createElement('div')),
+  )
+})
