@@ -6,13 +6,23 @@ import YoutubeSearch from '../../services/YoutubeSearch'
 
 import Results from './Results'
 
+const SEARCH_DELAY = 1000
+
 const Search = () => {
   const [searchResults, setSearchResults] = React.useState([])
+  let timeout
 
   const handleChange = async (event: SyntheticEvent): Promise<void> => {
-    const results = await YoutubeSearch(event.target.value)
+    if (timeout) {
+      clearTimeout(timeout)
+      timeout = undefined
+    }
 
-    setSearchResults(results)
+    timeout = setTimeout(async () => {
+      const results = await YoutubeSearch(event.target.value)
+
+      setSearchResults(results)
+    }, SEARCH_DELAY)
   }
 
   return (
