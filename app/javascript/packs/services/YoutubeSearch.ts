@@ -5,10 +5,11 @@ const YoutubeSearch = async (query: string): Promise<Array<SearchResult>> => {
     "part": [
       "snippet"
     ],
-      "q": query
+      "q": query,
+      "type": "video",
+      "videoEmbeddable": "true",
+      "regionCode": "ES"
     })
-
-    console.log("Response", response)
 
   return response.result.items.map((item: object) => {
     return new SearchResult(item)
