@@ -5,7 +5,6 @@ import { SyntheticEvent } from 'react'
 import YoutubeSearch from '../../services/YoutubeSearch'
 
 import Results from './Results'
-import SearchResult from '../../models/SearchResult'
 
 const Search = () => {
   const [searchResults, setSearchResults] = React.useState([])
