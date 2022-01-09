@@ -1,19 +1,17 @@
 import * as React from "react"
-import { OrderedList, ListItem } from "@chakra-ui/react"
+import { List, ListItem } from "@chakra-ui/react"
 
 import SearchResult from "../../models/SearchResult"
 
-
 const Results = ({ results }: { results: Array<SearchResult> }) => {
-  console.log(results)
   return (
-    <OrderedList>
+    <List>
       {results.map(result => (
         <ListItem key={result.id}>
           {result.title}
         </ListItem>
       ))}
-    </OrderedList>
+    </List>
   )
 }
 
