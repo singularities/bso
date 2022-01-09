@@ -3,10 +3,19 @@
   <head>
     <title>Bso</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script>
+      gapi.load('client', function() {
+        console.log('loaded client')
+
+        gapi.client.setApiKey('AIzaSyCK9oJIgiAJKJIJNExDsxU0ZTaffQcZpEM');
+        gapi.client.load('https://content.googleapis.com/discovery/v1/apis/youtube/v3/rest')
+                 .then(function() { console.log("GAPI client loaded for API"); },
+                       function(err) { console.error("Error loading GAPI client for API", err); })
+      })
+    </script>
+
     <%= javascript_pack_tag 'application' %>
   </head>
 
