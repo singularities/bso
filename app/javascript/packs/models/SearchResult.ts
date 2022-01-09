@@ -1,5 +1,6 @@
 class SearchResult {
-  private _gapiResult: any;object
+  private _gapiResult: object
+
   get gapiResult () { return this._gapiResult }
   get id () { return this.gapiResult.id.videoId }
   get title () { return this.gapiResult.snippet.title }
