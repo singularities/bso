@@ -7,8 +7,6 @@
     <script src="https://apis.google.com/js/api.js"></script>
     <script>
       gapi.load('client', function() {
-        console.log('loaded client')
-
         gapi.client.setApiKey('AIzaSyCK9oJIgiAJKJIJNExDsxU0ZTaffQcZpEM');
         gapi.client.load('https://content.googleapis.com/discovery/v1/apis/youtube/v3/rest')
                  .then(function() { console.log("GAPI client loaded for API"); },
