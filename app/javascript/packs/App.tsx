@@ -1,38 +1,35 @@
 import * as React from 'react'
+import { Routes, Route } from 'react-router-dom'
 import {
   ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
   theme,
 } from "@chakra-ui/react"
 
-import Search from './components/Search/index'
+import AuthProvider from './components/Auth/Provider'
+import Layout from './components/Layout'
+import LoginPage from './pages/Login'
+import HomePage from './pages/Home'
+
+import RequireAuth from './components/Auth/Required'
 
 export const App = () => (
   <ChakraProvider theme={theme}>
-    <Box p="3">
-      <Search />
-      <Grid minH="100vh" p={3}>
-        <VStack spacing={8}>
-          <Text>
-            Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
-          </Text>
-          <Link
-            color="teal.500"
-            href="https://chakra-ui.com"
-            fontSize="2xl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn Chakra
-          </Link>
-        </VStack>
-      </Grid>
-    </Box>
+    <AuthProvider>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/"
+            element={
+              <RequireAuth>
+                <HomePage />
+              </RequireAuth>
+            }
+          />
+        </Route>
+      </Routes>
+    </AuthProvider>
   </ChakraProvider>
 )
+
 
