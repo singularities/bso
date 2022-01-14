@@ -1,16 +1,40 @@
+export type AuthResult = {
+  status: Boolean,
+  userParams?: any,
+  errors?: any
+}
+
 const AuthService = {
-  isAuthenticated: false,
+  user: null,
 
-  signin(callback: VoidFunction) {
-    AuthService.isAuthenticated = true;
+  signin(email: string, password: string, callback: Function) {
+    setTimeout(callback, 100) // fake async
+  },
 
-    setTimeout(callback, 100); // fake async
+  async register(name: string, email: string, password: string): Promise<AuthResult> {
+    const response = await fetch('/api/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user: {
+          name,
+          email,
+          password
+        }
+      })
+     })
+
+    const body = await response.json()
+
+    if (response.ok) return { status: true, userParams: body }
+
+    return { status: false, errors: body }
   },
 
   signout(callback: VoidFunction) {
-    AuthService.isAuthenticated = false;
-
-    setTimeout(callback, 100);
+    setTimeout(callback, 100)
   }
 };
 

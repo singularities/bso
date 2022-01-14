@@ -1,5 +1,12 @@
 import * as React from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation, Link as ReactLink } from 'react-router-dom'
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  Button,
+  Link
+} from '@chakra-ui/react'
 
 import { useAuth } from '../components/Auth/Provider'
 
@@ -10,35 +17,48 @@ const LoginPage = () => {
 
   let from = location.state?.from?.pathname || "/";
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  // const [email, setEmail] = React.useState('')
+  // const [password, setPassword] = React.useState('')
 
-    let formData = new FormData(event.currentTarget);
-    let username = formData.get("username") as string;
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+    event.preventDefault()
 
-    auth.signin(username, () => {
-      // Send them back to the page they tried to visit when they were
-      // redirected to the login page. Use { replace: true } so we don't create
-      // another entry in the history stack for the login page.  This means that
-      // when they get to the protected page and click the back button, they
-      // won't end up back on the login page, which is also really nice for the
-      // user experience.
+    let formData = new FormData(event.currentTarget)
+    let email = formData.get('email') as string
+    let password = formData.get('password') as string
+
+    auth.signin(email, password, () => {
       navigate(from, { replace: true });
-    });
+    })
   }
 
   return (
-    <div>
-      <p>You must log in to view the page at {from}</p>
-
+    <>
       <form onSubmit={handleSubmit}>
-        <label>
-          Username: <input name="username" type="text" />
-        </label>{" "}
-        <button type="submit">Login</button>
+        <FormControl>
+          <FormLabel htmlFor="email">Correo electrónico</FormLabel>
+          <Input
+            id="email"
+            type="email"
+          />
+        </FormControl>
+        <FormControl>
+          <FormLabel htmlFor="password">Contraseña</FormLabel>
+          <Input
+            id="password"
+            type="password"
+          />
+        </FormControl>
+        <Button
+          width={'full'}
+          mt={2}
+        >
+          Entrar
+        </Button>
       </form>
-    </div>
-  );
+      <Link as={ReactLink} to="/register">Registrarse</Link>
+    </>
+  )
 }
 
 export default LoginPage

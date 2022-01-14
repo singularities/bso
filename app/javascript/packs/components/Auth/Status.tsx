@@ -8,7 +8,7 @@ const AuthStatus = () => {
   let auth = useAuth()
   let navigate = useNavigate()
 
-  if (!auth.user) {
+  if (!auth.isAuthenticated()) {
     return <Box>You are not logged in.</Box>;
   }
 
