@@ -1,11 +1,5 @@
-export default class User {
-  id: string
-  name: string
-  email: string
+import { Model } from 'mobx-rest'
 
-  constructor(params: any) {
-    this.id = params.id
-    this.name = params.name
-    this.email = params.email
-  }
+export default class User extends Model {
+
 }

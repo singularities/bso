@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :api do
-    resources :users, only: [:create]
+    resources :users, only: %i[index create]
   end
 
   root 'frontpage#index'

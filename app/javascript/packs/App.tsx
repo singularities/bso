@@ -5,6 +5,8 @@ import {
   theme,
 } from "@chakra-ui/react"
 
+import './adapter'
+
 import AuthProvider from './components/Auth/Provider'
 import Layout from './components/Layout'
 import LoginPage from './pages/Login'
@@ -12,6 +14,7 @@ import RegisterPage from './pages/Register'
 import HomePage from './pages/Home'
 
 import RequireAuth from './components/Auth/Required'
+import { Collections } from './components/Collections'
 
 export const App = () => (
   <ChakraProvider theme={theme}>
@@ -24,7 +27,9 @@ export const App = () => (
             path="/"
             element={
               <RequireAuth>
-                <HomePage />
+                <Collections>
+                  <HomePage />
+                </Collections>
               </RequireAuth>
             }
           />

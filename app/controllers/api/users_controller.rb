@@ -2,6 +2,12 @@ module Api
   class UsersController < ApplicationController
     respond_to :json
 
+    def index
+      render json: User.all.as_json(
+        only: %i[id name]
+      )
+    end
+
     def create
       user = User.new(user_params)
 
