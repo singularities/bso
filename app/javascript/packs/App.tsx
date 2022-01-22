@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { Routes, Route } from 'react-router-dom'
 import {
   ChakraProvider,
   theme,
@@ -7,36 +6,33 @@ import {
 
 import './adapter'
 
-import AuthProvider from './components/Auth/Provider'
-import Layout from './components/Layout'
-import LoginPage from './pages/Login'
-import RegisterPage from './pages/Register'
-import HomePage from './pages/Home'
+import AuthProvider, { authInitializer } from './components/Auth/Provider'
+import Routes from './components/Routes'
+import Loading from './components/Loading'
 
-import RequireAuth from './components/Auth/Required'
-import { Collections } from './components/Collections'
+export const App = () => {
+  const [loaded, setLoaded] = React.useState(false)
 
-export const App = () => (
-  <ChakraProvider theme={theme}>
-    <AuthProvider>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route
-            path="/"
-            element={
-              <RequireAuth>
-                <Collections>
-                  <HomePage />
-                </Collections>
-              </RequireAuth>
-            }
-          />
-        </Route>
-      </Routes>
-    </AuthProvider>
-  </ChakraProvider>
-)
+  React.useEffect(() => {
+    const load = async () => {
+      await authInitializer()
 
+      setLoaded(true)
+    }
 
+    load()
+  }, [])
+
+  return (
+    <ChakraProvider theme={theme}>
+      {loaded ? (
+        <AuthProvider>
+          <Routes />
+        </AuthProvider>
+      ) : (
+        <Loading />
+      )}
+
+    </ChakraProvider>
+  )
+}

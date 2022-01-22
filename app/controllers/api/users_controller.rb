@@ -2,9 +2,17 @@ module Api
   class UsersController < ApplicationController
     respond_to :json
 
+    before_action :authenticate_user!, except: :create
+
     def index
       render json: User.all.as_json(
         only: %i[id name]
+      )
+    end
+
+    def me
+      render json: current_user.as_json(
+        only: %i[id name email]
       )
     end
 

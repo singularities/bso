@@ -13,6 +13,10 @@ export interface AuthContextType {
 let userId = null
 let AuthContext = React.createContext<AuthContextType>(null!)
 
+export const authInitializer = async () => {
+  userId = await AuthService.getUserId()
+}
+
 export const useAuth = () => React.useContext(AuthContext)
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {

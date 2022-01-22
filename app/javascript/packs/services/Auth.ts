@@ -7,7 +7,17 @@ export type AuthResult = {
 const AuthService = {
   user: null,
 
-  signin(email: string, password: string, callback: Function) {
+  async getUserId (): Promise<string | null> {
+    const response = await fetch('/api/users/me')
+
+    if (!response.ok) return null
+
+    const body = await response.json()
+
+    return body.id
+  },
+
+  signin (email: string, password: string, callback: Function) {
     setTimeout(callback, 100) // fake async
   },
 
