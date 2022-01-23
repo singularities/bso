@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, Link as ReactLink } from 'react-router-dom'
 import { Link } from '@chakra-ui/react'
 
 import AuthStatus from './Auth/Status'
@@ -12,7 +12,7 @@ const Layout = () => {
 
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link as={ReactLink} to="/">Home</Link>
         </li>
       </ul>
 
