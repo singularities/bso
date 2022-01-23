@@ -1,6 +1,8 @@
 import SearchResult from '../models/SearchResult'
 
 const YoutubeSearch = async (query: string): Promise<Array<SearchResult>> => {
+  if (query === '' || query === null) return []
+
   const response = await gapi.client.youtube.search.list({
     "part": [
       "snippet"
