@@ -1,32 +1,33 @@
 import * as React from 'react'
 
-import User from '../models/User'
 import UsersCollection, { Users } from '../collections/Users'
 
-import { Collection } from 'mobx-rest'
+export interface CollectionsContextType {
+  users: Users
+}
 
-const Context = React.createContext<Users | null | undefined>(
+const Context = React.createContext<CollectionsContextType>(
   null
 )
 
 export const CollectionsProvider = ({
-  users,
+  value,
   children
 }: {
-  users: Collection<User>
+  value: CollectionsContextType,
   children: React.ReactNode
-}) => <Context.Provider value={users as any}>{children}</Context.Provider>
+}) => <Context.Provider value={value}>{children}</Context.Provider>
 
-export const useCollections = (): Users => {
-  const users = React.useContext(Context)
+export const useCollections = (): CollectionsContextType => {
+  const collections = React.useContext(Context)
 
-  if (!users) {
+  if (!collections) {
     throw new Error(
       'users must be used within a CollectionsProvider'
     )
   }
 
-  return users
+  return collections
 }
 
 export const Collections = ({
@@ -40,6 +41,7 @@ export const Collections = ({
     users.fetch()
   })
 
-  return <CollectionsProvider users={users}>{children}</CollectionsProvider>
-}
+  const value = { users }
 
+  return <CollectionsProvider value={value}>{children}</CollectionsProvider>
+}

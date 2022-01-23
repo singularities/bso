@@ -7,14 +7,14 @@ export type AuthResult = {
 const AuthService = {
   user: null,
 
-  async getUserId (): Promise<string | null> {
+  async getUser (): Promise<string | null> {
     const response = await fetch('/api/session')
 
     if (!response.ok) return null
 
     const body = await response.json()
 
-    return body.id
+    return body
   },
 
   async signin (email: string, password: string) {

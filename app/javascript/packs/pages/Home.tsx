@@ -9,10 +9,12 @@ import {
 } from "@chakra-ui/react"
 
 import Search from "../components/Search"
+import AuthStatus from "../components/Auth/Status"
 
 const HomePage = () => {
   return (
     <Box p="3">
+      <AuthStatus/>
       <Search />
       <Grid minH="100vh" p={3}>
         <VStack spacing={8}>
