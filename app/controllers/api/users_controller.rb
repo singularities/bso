@@ -10,12 +10,6 @@ module Api
       )
     end
 
-    def me
-      render json: current_user.as_json(
-        only: %i[id name email]
-      )
-    end
-
     def create
       user = User.new(user_params)
 

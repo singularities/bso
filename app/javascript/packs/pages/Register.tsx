@@ -37,10 +37,6 @@ const RegisterPage = () => {
       return
     }
 
-    console.log('hereeeeeeeeeeeee')
-    console.log(auth.isAuthenticated())
-    console.log(from)
-
     setErrors(result)
   }
 

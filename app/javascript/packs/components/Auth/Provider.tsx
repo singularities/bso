@@ -5,7 +5,7 @@ import AuthService from '../../services/Auth'
 export interface AuthContextType {
   userId: () => number | null
   isAuthenticated: () => boolean
-  signin: (email: string, password: string, callback: VoidFunction) => void
+  signin: (email: string, password: string) => void
   register: (name: string, email: string, password: string) => void
   signout: (callback: VoidFunction) => void
 }
@@ -23,10 +23,14 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   let getUserId = () => userId
   let isAuthenticated = () => userId !== null
 
-  let signin = (email: string, password: string, callback: Function) => {
-    return AuthService.signin(email, password, () => {
-      callback()
-    })
+  let signin = async (email: string, password: string) => {
+    const result = await AuthService.signin(email, password)
+
+    if (result.status) {
+      userId = result.userParams.id
+    } else {
+      return result.errors
+    }
   }
 
   let register = async (name: string, email: string, password: string): Promise<any> => {
@@ -39,12 +43,10 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }
 
-  let signout = (callback: VoidFunction) => {
-    return AuthService.signout(() => {
-      userId = null
+  let signout = async (): Promise<void> => {
+    await AuthService.signout()
 
-      callback()
-    })
+    userId = null
   }
 
   let value = { userId: getUserId, isAuthenticated, signin, register, signout }

@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
-    resources :users, only: %i[index create] do
-      get :me, on: :collection
-    end
+    resource :session, only: %i[show create destroy]
+    resources :users, only: %i[index create]
   end
 
   devise_for :user
