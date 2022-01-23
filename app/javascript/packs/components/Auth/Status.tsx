@@ -16,8 +16,10 @@ const AuthStatus = () => {
     <Box>
       Welcome {auth.user().name}!{" "}
       <Button
-        onClick={() => {
-          auth.signout(() => navigate("/"))
+        onClick={async () => {
+          await auth.signout()
+
+          navigate("/")
         }}
       >
         Sign out

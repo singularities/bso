@@ -5,9 +5,9 @@ import AuthService from '../../services/Auth'
 export interface AuthContextType {
   user: () => any
   isAuthenticated: () => boolean
-  signin: (email: string, password: string) => void
-  register: (name: string, email: string, password: string) => void
-  signout: (callback: VoidFunction) => void
+  signin: (email: string, password: string) => Promise<void>
+  register: (name: string, email: string, password: string) => Promise<void>
+  signout: () => Promise<void>
 }
 
 let user = null
