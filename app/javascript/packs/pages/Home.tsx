@@ -8,14 +8,16 @@ import {
   Link
 } from "@chakra-ui/react"
 
-import Search from "../components/Search"
-import AuthStatus from "../components/Auth/Status"
+import Search from '../components/Search'
+import AuthStatus from '../components/Auth/Status'
+import Songs from '../components/Songs'
 
 const HomePage = () => {
   return (
     <Box p="3">
       <AuthStatus/>
       <Search />
+      <Songs />
       <Grid minH="100vh" p={3}>
         <VStack spacing={8}>
           <Text>

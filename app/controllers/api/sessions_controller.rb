@@ -2,9 +2,7 @@ module Api
   class SessionsController < ApplicationController
     prepend_before_action :allow_params_authentication!, only: :create
 
-    respond_to :json
-
-    before_action :authenticate_user!, only: :show
+    skip_before_action :authenticate_user!, only: :create
 
     def show
       render json: current_user.as_json(

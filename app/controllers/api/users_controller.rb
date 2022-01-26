@@ -1,8 +1,6 @@
 module Api
   class UsersController < ApplicationController
-    respond_to :json
-
-    before_action :authenticate_user!, except: :create
+    skip_before_action :authenticate_user!, only: :create
 
     def index
       render json: User.all.as_json(

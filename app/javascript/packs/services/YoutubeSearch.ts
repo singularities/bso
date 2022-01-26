@@ -14,6 +14,7 @@ const YoutubeSearch = async (query: string): Promise<Array<SearchResult>> => {
     })
 
   return response.result.items.map((item: object) => {
+    console.dir(item)
     return new SearchResult(item)
   })
 }

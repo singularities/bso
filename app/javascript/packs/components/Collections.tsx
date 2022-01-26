@@ -1,9 +1,11 @@
 import * as React from 'react'
 
 import UsersCollection, { Users } from '../collections/Users'
+import SongsCollection, { Songs } from '../collections/Songs'
 
 export interface CollectionsContextType {
-  users: Users
+  users: Users,
+  songs: Songs
 }
 
 const Context = React.createContext<CollectionsContextType>(
@@ -23,7 +25,7 @@ export const useCollections = (): CollectionsContextType => {
 
   if (!collections) {
     throw new Error(
-      'users must be used within a CollectionsProvider'
+      'collections must be used within a CollectionsProvider'
     )
   }
 
@@ -36,12 +38,14 @@ export const Collections = ({
   children: React.ReactNode
 }) => {
   const users = React.useRef(UsersCollection).current
+  const songs = React.useRef(SongsCollection).current
 
   React.useEffect(() => {
     users.fetch()
+    songs.fetch()
   })
 
-  const value = { users }
+  const value = { users, songs }
 
   return <CollectionsProvider value={value}>{children}</CollectionsProvider>
 }
