@@ -4,21 +4,22 @@ import { computed, makeObservable } from 'mobx'
 import usersCollection from '../collections/Users'
 
 export default class Song extends Model {
-  // constructor (attr: any = {}, defaultAttr: any = {}) {
-  //   super(attr, defaultAttr)
+  constructor (attributes: any = {}, defaultAttributes: any = {}) {
+    super(attributes, defaultAttributes)
 
-  //   makeObservable(this, {
-  //     user: computed
-  //   })
-  // }
+    makeObservable(this, {
+      user: computed,
+      userName: computed
+    })
+  }
 
-  user () {
+  get user () {
     return usersCollection.get(this.get('user_id'))
   }
 
-  userName () {
-    if (!this.user()) return null
+  get userName () {
+    if (!this.user) return null
 
-    return this.user().get('name')
+    return this.user.get('name')
   }
 }
