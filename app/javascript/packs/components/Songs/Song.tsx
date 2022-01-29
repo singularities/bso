@@ -28,7 +28,7 @@ const SongComponent = ({ song }: {song: Song}) => {
           <Box as='span' color='gray.600' fontSize='sm'>
             Añadida por &nbsp;
           </Box>
-          {song.user().get('name')}
+          {song.userName()}
         </Box>
       </Box>
     </Box>

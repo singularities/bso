@@ -15,4 +15,10 @@ export default class Song extends Model {
   user () {
     return usersCollection.get(this.get('user_id'))
   }
+
+  userName () {
+    if (!this.user()) return null
+
+    return this.user().get('name')
+  }
 }
