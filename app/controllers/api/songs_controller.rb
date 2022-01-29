@@ -2,7 +2,7 @@ module Api
   class SongsController < ApplicationController
     def index
       render json: Song.all.as_json(
-        only: %i[id user_id youtube_id]
+        only: %i[id title user_id youtube_id]
       )
     end
 
@@ -11,7 +11,7 @@ module Api
 
       if song.save
         render json: song.as_json(
-          only: %i[id user_id youtube_id]
+          only: %i[id title user_id youtube_id]
         ), status: 201
       else
         render json: song.errors, status: 422
@@ -21,7 +21,7 @@ module Api
     private
 
     def song_params
-      params.require(:song).permit(:youtube_id)
+      params.require(:song).permit(:title, :youtube_id)
     end
   end
 end
