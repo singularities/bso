@@ -1,13 +1,10 @@
 import * as React from "react"
 import {
-  Flex,
-  Image,
-  List,
-  ListItem,
-  Text
+  List
  } from "@chakra-ui/react"
 
 import SearchResult from "../../models/SearchResult"
+import Result from './Result'
 
 const Results = ({ results }: { results: Array<SearchResult> }) => {
   if (results.length === 0) return null
@@ -15,12 +12,7 @@ const Results = ({ results }: { results: Array<SearchResult> }) => {
   return (
     <List mt="2">
       {results.map(result => (
-        <ListItem key={result.id}>
-          <Flex mb="2">
-            <Image src={result.thumbnail} />
-            <Text ml="2">{result.title}</Text>
-          </Flex>
-        </ListItem>
+        <Result key={result.id} result={result} />
       ))}
     </List>
   )
