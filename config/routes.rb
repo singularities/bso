@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resource :session, only: %i[show create destroy]
     resources :users, only: %i[index create]
     resources :songs, only: %i[index create]
+    resources :comments, only: %i[index create]
   end
 
   devise_for :user
