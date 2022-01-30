@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { AspectRatio, Box } from '@chakra-ui/react'
+import { AspectRatio, Box, Flex, IconButton, Spacer } from '@chakra-ui/react'
+import { FaHeart, FaRegComment } from 'react-icons/fa'
 
 import Song from '../../models/Song'
 
@@ -24,12 +25,31 @@ const SongComponent = ({ song }: {song: Song}) => {
           >
             {song.get('title')}
           </Box>
-        <Box mt='1'>
+        <Flex mt='1' alignItems={'center'}>
           <Box as='span' color='gray.600' fontSize='sm'>
             Añadida por &nbsp;
           </Box>
-          {song.userName}
-        </Box>
+          <Box as='span'>
+            {song.userName}
+          </Box>
+          <Spacer />
+          <IconButton
+            variant='ghost'
+            colorScheme={'gray'}
+            aria-label='Comentar'
+            icon={<FaRegComment />} />
+          <Box as='span'>
+            1
+          </Box>
+          <IconButton
+            variant='ghost'
+            colorScheme={false ? 'red' : 'gray'}
+            aria-label='Me gusta'
+            icon={<FaHeart />} />
+          <Box as='span'>
+            1
+          </Box>
+        </Flex>
       </Box>
     </Box>
   )
