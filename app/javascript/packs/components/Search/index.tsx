@@ -10,6 +10,7 @@ const SEARCH_DELAY = 1000
 
 const Search = () => {
   const [searchResults, setSearchResults] = React.useState([])
+  const input = React.useRef<HTMLInputElement>(null)
   let timeout
 
   const handleChange = async (event: SyntheticEvent): Promise<void> => {
@@ -25,12 +26,18 @@ const Search = () => {
     }, SEARCH_DELAY)
   }
 
+  const onAdd = () => {
+    setSearchResults([])
+    input.current.value = ''
+  }
+
   return (
     <>
       <Input
+        ref={input}
         onChange={handleChange}
         placeholder='Buscar canción' />
-      <Results results={searchResults} />
+      <Results results={searchResults} onAdd={onAdd}/>
     </>
   )
 }

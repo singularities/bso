@@ -2,14 +2,22 @@ import * as React from 'react'
 import { Flex, Image, ListItem, Text } from '@chakra-ui/react'
 
 import SearchResult from '../../../models/SearchResult'
+import Add from './Add'
+import Show from './Show'
 
-const Result = ({ result }: { result: SearchResult }) => {
+const Result = ({ result, onAdd }: { result: SearchResult, onAdd: Function }) => {
+  const [add, setAdd] = React.useState(false)
+
+  const onClick = () => {
+    setAdd(true)
+  }
+
   return (
-    <ListItem>
-      <Flex mb="2">
-        <Image src={result.thumbnail} />
-        <Text ml="2">{result.title}</Text>
-      </Flex>
+    <ListItem onClick={onClick}>
+      {add ?
+        <Add result={result} onAdd={onAdd}/> :
+        <Show result={result} />
+      }
     </ListItem>
   )
 }

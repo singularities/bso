@@ -9,7 +9,7 @@ const SongComponent = ({ song }: {song: Song}) => {
       <AspectRatio maxW='100%' ratio={16 / 9}>
         <iframe
           width='100%'
-          src={`https://www.youtube.com/embed/${song.get('youtube_id')}`}
+          src={song.embedUrl}
           title={`song ${song.get('youtube_id')}`}
           frameBorder="0"
           allowFullScreen>
