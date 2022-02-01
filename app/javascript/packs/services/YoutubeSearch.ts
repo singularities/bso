@@ -1,4 +1,4 @@
-import SearchResult from '../models/SearchResult'
+import SearchResult from '../stores/models/SearchResult'
 
 const YoutubeSearch = async (query: string): Promise<Array<SearchResult>> => {
   if (query === '' || query === null) return []

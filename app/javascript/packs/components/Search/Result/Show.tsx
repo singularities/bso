@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Flex, Image, Text } from '@chakra-ui/react'
 
-import SearchResult from '../../../models/SearchResult'
+import SearchResult from '../../../stores/models/SearchResult'
 
 const Show = ({result}: {result: SearchResult}) => {
   return (

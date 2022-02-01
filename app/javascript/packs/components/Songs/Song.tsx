@@ -2,7 +2,7 @@ import * as React from 'react'
 import { AspectRatio, Box, Flex, IconButton, Spacer } from '@chakra-ui/react'
 import { FaHeart, FaRegComment } from 'react-icons/fa'
 
-import Song from '../../models/Song'
+import Song from '../../stores/models/Song'
 
 const SongComponent = ({ song }: {song: Song}) => {
   return (

@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-import UsersCollection, { Users } from '../collections/Users'
-import SongsCollection, { Songs } from '../collections/Songs'
+import UsersCollection, { Users } from '../stores/collections/Users'
+import SongsCollection, { Songs } from '../stores/collections/Songs'
 
 export interface CollectionsContextType {
   users: Users,

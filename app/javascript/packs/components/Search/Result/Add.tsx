@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { AspectRatio, Box, Button, Flex } from '@chakra-ui/react'
 
-import SearchResult from '../../../models/SearchResult'
-import Song from '../../../models/Song'
+import SearchResult from '../../../stores/models/SearchResult'
+import Song from '../../../stores/models/Song'
 import { useAuth } from '../../Auth/Provider'
 
 const Add = ({ result, onAdd }: { result: SearchResult, onAdd: Function }) => {
