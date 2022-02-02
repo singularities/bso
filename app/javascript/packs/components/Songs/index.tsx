@@ -8,6 +8,17 @@ import SongComponent from './Song'
 
 const InitialSongCount = 3
 
+function arraysEqual(a: Array<Song>, b: Array<Song>) {
+  if (a === b) return true
+  if (a == null || b == null) return false
+  if (a.length !== b.length) return false
+
+  for (let i = 0; i < a.length; ++i) {
+    if (a[i] !== b[i]) return false
+  }
+  return true
+}
+
 const Songs = ({songs}: {songs: Array<Song>}) => {
   const sortedSongs =
     songs.sort((a, b) => (a.get('created_at') > b.get('created_at') ? -1 : 1))
@@ -26,11 +37,12 @@ const Songs = ({songs}: {songs: Array<Song>}) => {
     setDisplayedSongsCount(displayedSongsCount + 1)
   }
 
-  if (!displayedSongs.length && sortedSongs.length) {
-    setDisplayedSongs(sortedSongs.slice(0, displayedSongsCount))
-  } else if (displayedSongs.length && displayedSongs[0] !== sortedSongs[0]) {
+  const firstSongs = sortedSongs.slice(0, displayedSongsCount)
+
+  if (!arraysEqual(firstSongs, displayedSongs)) {
     setDisplayedSongs(sortedSongs.slice(0, displayedSongsCount))
     setDisplayedSongsCount(InitialSongCount)
+    setHasMore(true)
   }
 
   return (
