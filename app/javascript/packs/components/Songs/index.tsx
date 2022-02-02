@@ -3,19 +3,14 @@ import { observer } from 'mobx-react'
 import { Spinner, VStack } from '@chakra-ui/react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
-import { useCollections } from '../Collections'
-
-import Song from './Song'
+import Song from '../../stores/models/Song'
+import SongComponent from './Song'
 
 const InitialSongCount = 3
 
-const Songs = () => {
-  const { songs } = useCollections()
-
+const Songs = ({songs}: {songs: Array<Song>}) => {
   const sortedSongs =
-    songs
-      .toArray()
-      .sort((a, b) => (a.get('created_at') > b.get('created_at') ? -1 : 1))
+    songs.sort((a, b) => (a.get('created_at') > b.get('created_at') ? -1 : 1))
   const [hasMore, setHasMore] = React.useState(true)
   const [displayedSongsCount, setDisplayedSongsCount] = React.useState(InitialSongCount)
   const [displayedSongs, setDisplayedSongs] = React.useState([])
@@ -46,7 +41,7 @@ const Songs = () => {
         hasMore={hasMore}
         loader={<Spinner />} >
         {displayedSongs.map(song => (
-          <Song key={song.id} song={song} />
+          <SongComponent key={song.id} song={song} />
         ))}
       </InfiniteScroll>
     </VStack>
