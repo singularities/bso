@@ -20,11 +20,14 @@ function arraysEqual(a: Array<Song>, b: Array<Song>) {
 }
 
 const Songs = ({songs}: {songs: Array<Song>}) => {
+  const [displayedSongs, setDisplayedSongs] = React.useState([])
+  const [displayedSongsCount, setDisplayedSongsCount] = React.useState(InitialSongCount)
+  const [hasMore, setHasMore] = React.useState(true)
+
+  if (!songs.length) return null
+
   const sortedSongs =
     songs.sort((a, b) => (a.get('created_at') > b.get('created_at') ? -1 : 1))
-  const [hasMore, setHasMore] = React.useState(true)
-  const [displayedSongsCount, setDisplayedSongsCount] = React.useState(InitialSongCount)
-  const [displayedSongs, setDisplayedSongs] = React.useState([])
 
   const fetchMoreSongs = () => {
     if (sortedSongs.length <= displayedSongsCount) {
