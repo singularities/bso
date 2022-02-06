@@ -1,13 +1,10 @@
 import * as React from 'react'
 import { AspectRatio, Box, Button, Flex } from '@chakra-ui/react'
 
-import SearchResult from '../../../stores/models/SearchResult'
-import Song from '../../../stores/models/Song'
-import { useAuth } from '../../Auth/Provider'
+import SearchResult from '../../../../stores/models/SearchResult'
+import Song from '../../../../stores/models/Song'
 
 const Add = ({ result, onAdd }: { result: SearchResult, onAdd: Function }) => {
-  const auth = useAuth()
-
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<any> => {
     event.preventDefault()
 

@@ -4,7 +4,7 @@ import {
 } from "@chakra-ui/react"
 
 import AuthStatus from '../components/Auth/Status'
-import SongsContainer from "../components/SongsContainer"
+import SongsContainer from '../components/SongsContainer'
 
 const HomePage = () => {
   return (

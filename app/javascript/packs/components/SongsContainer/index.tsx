@@ -1,9 +1,10 @@
 import * as React from 'react'
 import { observer } from 'mobx-react'
 
-import Search from '../Search'
-import Songs from '../Songs'
+import Search from './Search'
+import Songs from './Songs'
 import { useCollections } from '../Collections'
+import SongAdd from './SongAdd'
 
 const SongsContainer = () => {
   const { songs } = useCollections()
@@ -28,6 +29,7 @@ const SongsContainer = () => {
     <>
       <Search handleChange={handleSearch} />
       <Songs songs={filteredSongs}/>
+      <SongAdd query={query}/>
     </>
   )
 }
