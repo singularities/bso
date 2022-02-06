@@ -3,7 +3,7 @@ import { observer } from 'mobx-react'
 import { Spinner, VStack } from '@chakra-ui/react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
-import Song from '../../stores/models/Song'
+import Song from '../../../stores/models/Song'
 import SongComponent from './Song'
 
 const InitialSongCount = 3
@@ -24,10 +24,16 @@ const Songs = ({songs}: {songs: Array<Song>}) => {
   const [displayedSongsCount, setDisplayedSongsCount] = React.useState(InitialSongCount)
   const [hasMore, setHasMore] = React.useState(true)
 
-  if (!songs.length) return null
-
   const sortedSongs =
     songs.sort((a, b) => (a.get('created_at') > b.get('created_at') ? -1 : 1))
+
+  React.useEffect(() => {
+    setDisplayedSongsCount(InitialSongCount)
+    setDisplayedSongs(sortedSongs.slice(0, InitialSongCount))
+    setHasMore(true)
+  }, [sortedSongs])
+
+  if (!sortedSongs.length) return null
 
   const fetchMoreSongs = () => {
     if (sortedSongs.length <= displayedSongsCount) {
@@ -38,14 +44,6 @@ const Songs = ({songs}: {songs: Array<Song>}) => {
     displayedSongs.push(sortedSongs[displayedSongsCount])
     setDisplayedSongs(displayedSongs)
     setDisplayedSongsCount(displayedSongsCount + 1)
-  }
-
-  const firstSongs = sortedSongs.slice(0, displayedSongsCount)
-
-  if (!arraysEqual(firstSongs, displayedSongs)) {
-    setDisplayedSongs(sortedSongs.slice(0, displayedSongsCount))
-    setDisplayedSongsCount(InitialSongCount)
-    setHasMore(true)
   }
 
   return (
