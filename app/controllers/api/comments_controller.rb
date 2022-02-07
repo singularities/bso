@@ -1,13 +1,13 @@
 module Api
   class CommentsController < ApplicationController
     def index
-      render json: Comments.by_user_id(params[:user_id]).as_json(
+      render json: Comment.by_song_id(params[:song_id]).as_json(
         only: %i[id user_id song_id text]
       )
     end
 
     def create
-      comment = Song.new(comment_params)
+      comment = Comment.new(comment_params)
       comment.user_id = current_user.id
 
       if comment.save
