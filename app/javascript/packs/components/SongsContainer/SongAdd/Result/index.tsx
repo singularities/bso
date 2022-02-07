@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Flex, Image, ListItem, Text } from '@chakra-ui/react'
 
-import SearchResult from '../../../stores/models/SearchResult'
+import SearchResult from '../../../../stores/models/SearchResult'
 import Add from './Add'
 import Show from './Show'
 

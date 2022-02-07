@@ -3,14 +3,17 @@ import { Center, Input, Spinner } from '@chakra-ui/react'
 
 import YoutubeSearch from '../../../services/YoutubeSearch'
 import Results from './Results'
+import { useSearch } from '../Search/Provider'
 
 const SEARCH_DELAY = 1000
 
-const Body = ({query, inputRef}: {
-  query: string, inputRef: React.MutableRefObject<HTMLInputElement>
+const Body = ({inputRef, onAdd}: {
+  inputRef: React.MutableRefObject<HTMLInputElement>,
+  onAdd: Function
 }) => {
   const [loading, setLoading] = React.useState(false)
   const [searchResults, setSearchResults] = React.useState([])
+  const { query } = useSearch()
   let timeout
 
   const search = async () => {
@@ -41,11 +44,6 @@ const Body = ({query, inputRef}: {
     }
 
     timeout = setTimeout(search, SEARCH_DELAY)
-  }
-
-  const onAdd = () => {
-    setSearchResults([])
-    inputRef.current.value = ''
   }
 
   return (

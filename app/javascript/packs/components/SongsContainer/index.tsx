@@ -5,31 +5,32 @@ import Search from './Search'
 import Songs from './Songs'
 import { useCollections } from '../Collections'
 import SongAdd from './SongAdd'
+import { useSearch } from './Search/Provider'
+
+const SEARCH_DELAY = 1000
 
 const SongsContainer = () => {
   const { songs } = useCollections()
-  const [query, setQuery] = React.useState('')
-  const [filteredSongs, setFilteredSongs] = React.useState([])
+  const { query } = useSearch()
 
-  if (!filteredSongs.length && songs.length && !query.length) {
-    setFilteredSongs(songs.toArray())
-  }
+  const songsArray = songs.toArray()
 
-  const handleSearch = (q: string) => {
-    setQuery(q.toLowerCase())
+  const filteredSongs = React.useMemo(() => {
+    if (!query.length) return songsArray
 
-    const filtered = songs
-        .toArray()
-        .filter(song => song.get('title').toLowerCase().includes(q))
-
-    setFilteredSongs(filtered)
-  }
+    return songsArray
+      .filter(
+        song => song.get('title')
+                    .toLowerCase()
+                    .includes(query.toLowerCase())
+      )
+  }, [query, songsArray])
 
   return (
     <>
-      <Search handleChange={handleSearch} />
+      <Search />
       <Songs songs={filteredSongs}/>
-      <SongAdd query={query}/>
+      <SongAdd />
     </>
   )
 }

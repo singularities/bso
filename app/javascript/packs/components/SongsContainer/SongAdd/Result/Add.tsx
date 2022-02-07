@@ -3,8 +3,11 @@ import { AspectRatio, Box, Button, Flex } from '@chakra-ui/react'
 
 import SearchResult from '../../../../stores/models/SearchResult'
 import Song from '../../../../stores/models/Song'
+import { useSearch } from '../../Search/Provider'
 
 const Add = ({ result, onAdd }: { result: SearchResult, onAdd: Function }) => {
+  const {setQuery} = useSearch()
+
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<any> => {
     event.preventDefault()
 
@@ -14,6 +17,8 @@ const Add = ({ result, onAdd }: { result: SearchResult, onAdd: Function }) => {
     })
 
     await song.save({}, { optimistic: false})
+
+    setQuery('')
 
     onAdd()
   }

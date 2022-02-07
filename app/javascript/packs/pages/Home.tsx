@@ -5,12 +5,15 @@ import {
 
 import AuthStatus from '../components/Auth/Status'
 import SongsContainer from '../components/SongsContainer'
+import SearchProvider from "../components/SongsContainer/Search/Provider"
 
 const HomePage = () => {
   return (
     <Box p="3">
       <AuthStatus/>
-      <SongsContainer/>
+      <SearchProvider>
+        <SongsContainer/>
+      </SearchProvider>
     </Box>
   )
 }
