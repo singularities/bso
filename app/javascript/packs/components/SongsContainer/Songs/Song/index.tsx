@@ -34,7 +34,7 @@ const SongComponent = ({ song }: {song: Song}) => {
             {song.userName}
           </Box>
           <Spacer />
-          <Comments songId={song.id}/>
+          <Comments song={song}/>
           <IconButton
             variant='ghost'
             colorScheme={false ? 'red' : 'gray'}
