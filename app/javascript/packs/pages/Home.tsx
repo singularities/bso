@@ -5,7 +5,7 @@ import {
 
 import AuthStatus from '../components/Auth/Status'
 import SongsContainer from '../components/SongsContainer'
-import SearchProvider from "../components/SongsContainer/Search/Provider"
+import SearchProvider from "../components/Search/Provider"
 
 const HomePage = () => {
   return (

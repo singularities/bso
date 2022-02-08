@@ -3,7 +3,7 @@ import {
   List
  } from "@chakra-ui/react"
 
-import SearchResult from "../../../stores/models/SearchResult"
+import SearchResult from "../../stores/models/SearchResult"
 import Result from './Result'
 
 const Results = ({ results, onAdd }: { results: Array<SearchResult>, onAdd: Function }) => {

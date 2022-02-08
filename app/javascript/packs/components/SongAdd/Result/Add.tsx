@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { AspectRatio, Box, Button, Flex, Textarea, VStack } from '@chakra-ui/react'
 
-import SearchResult from '../../../../stores/models/SearchResult'
-import Song from '../../../../stores/models/Song'
-import Comment from '../../../../stores/models/Comment'
+import SearchResult from '../../../stores/models/SearchResult'
+import Song from '../../../stores/models/Song'
+import Comment from '../../../stores/models/Comment'
 import { useSearch } from '../../Search/Provider'
 
 const Add = ({ result, onAdd }: { result: SearchResult, onAdd: Function }) => {

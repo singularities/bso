@@ -3,8 +3,8 @@ import { Box, IconButton, Modal, ModalBody, ModalCloseButton, ModalContent, Moda
 import { FaRegComment } from 'react-icons/fa'
 import { observer } from 'mobx-react'
 
-import {Comments} from '../../../../stores/collections/Comments'
-import Song from '../../../../stores/models/Song'
+import {Comments} from '../../stores/collections/Comments'
+import Song from '../../stores/models/Song'
 
 const CommentsComponent = ({song}: {song: Song}) => {
   const commentsCollection = React.useRef(new Comments())

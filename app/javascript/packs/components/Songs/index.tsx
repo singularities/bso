@@ -3,8 +3,8 @@ import { observer } from 'mobx-react'
 import { Spinner, VStack } from '@chakra-ui/react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
-import Song from '../../../stores/models/Song'
-import SongComponent from './Song'
+import Song from '../../stores/models/Song'
+import SongComponent from '../Song'
 
 const InitialSongCount = 3
 

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Center, Input, Spinner } from '@chakra-ui/react'
 
-import YoutubeSearch from '../../../services/YoutubeSearch'
+import YoutubeSearch from '../../services/YoutubeSearch'
 import Results from './Results'
 import { useSearch } from '../Search/Provider'
 
