@@ -1,9 +1,13 @@
 module Api
   class CommentsController < ApplicationController
     def index
-      render json: Comment.by_song_id(params[:song_id]).as_json(
-        only: %i[id user_id song_id text]
-      )
+      render json:
+        Comment
+          .by_song_id(params[:song_id])
+          .order(created_at: :asc)
+          .as_json(
+            only: %i[id user_id song_id text created_at]
+          )
     end
 
     def create

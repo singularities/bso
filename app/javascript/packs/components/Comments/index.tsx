@@ -1,10 +1,12 @@
 import * as React from 'react'
-import { Box, IconButton, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, useDisclosure } from '@chakra-ui/react'
+import { Box, IconButton, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, useDisclosure, VStack } from '@chakra-ui/react'
 import { FaRegComment } from 'react-icons/fa'
 import { observer } from 'mobx-react'
 
 import {Comments} from '../../stores/collections/Comments'
 import Song from '../../stores/models/Song'
+import Comment from '../Comment'
+import CommentAdd from '../CommentAdd'
 
 const CommentsComponent = ({song}: {song: Song}) => {
   const commentsCollection = React.useRef(new Comments())
@@ -34,6 +36,14 @@ const CommentsComponent = ({song}: {song: Song}) => {
           <ModalHeader>Comentarios de {song.get('title')}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
+            <VStack spacing={3} align='stretch'>
+              {
+                commentsCollection.current.map(comment => (
+                  <Comment key={comment.id} comment={comment} />
+                ))
+              }
+              <CommentAdd comments={commentsCollection.current} song={song} />
+            </VStack>
           </ModalBody>
         </ModalContent>
       </Modal>

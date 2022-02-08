@@ -3,7 +3,7 @@ import { AspectRatio, Box, Flex, IconButton, Spacer } from '@chakra-ui/react'
 import { FaHeart } from 'react-icons/fa'
 
 import Song from '../../stores/models/Song'
-import Comments from './Comments'
+import Comments from '../Comments'
 
 const SongComponent = ({ song }: {song: Song}) => {
   return (
