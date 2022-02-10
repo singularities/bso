@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
   respond_to :json
 
-  before_action :authenticate_user!, except: :create
+  before_action :authenticate_user!
 
   private
 
