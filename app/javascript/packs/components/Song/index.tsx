@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { AspectRatio, Box, Flex, IconButton, Spacer } from '@chakra-ui/react'
-import { FaHeart } from 'react-icons/fa'
+import { AspectRatio, Box, Flex, Spacer } from '@chakra-ui/react'
 
 import Song from '../../stores/models/Song'
 import Comments from '../Comments'
+import Likes from '../Likes'
 
 const SongComponent = ({ song }: {song: Song}) => {
   return (
@@ -35,14 +35,7 @@ const SongComponent = ({ song }: {song: Song}) => {
           </Box>
           <Spacer />
           <Comments song={song}/>
-          <IconButton
-            variant='ghost'
-            colorScheme={false ? 'red' : 'gray'}
-            aria-label='Me gusta'
-            icon={<FaHeart />} />
-          <Box as='span'>
-            1
-          </Box>
+          <Likes song={song}/>
         </Flex>
       </Box>
     </Box>

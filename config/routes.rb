@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :users, only: %i[index create]
     resources :songs, only: %i[index create]
     resources :comments, only: %i[index create]
+    resources :likes, only: %i[index create destroy]
   end
 
   devise_for :user
