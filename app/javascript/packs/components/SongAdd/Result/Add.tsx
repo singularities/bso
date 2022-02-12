@@ -54,7 +54,6 @@ const Add = ({ result, onAdd }: { result: SearchResult, onAdd: Function }) => {
           <Flex mt='3' justify='right'>
             <Button
               type='submit'
-              colorScheme='red'
             >
               Añadir
             </Button>

@@ -1,10 +1,10 @@
 import * as React from 'react'
 import {
-  ChakraProvider,
-  theme,
+  ChakraProvider
 } from "@chakra-ui/react"
 
 import './adapter'
+import theme from './theme'
 
 import AuthProvider, { authInitializer } from './components/Auth/Provider'
 import Routes from './components/Routes'

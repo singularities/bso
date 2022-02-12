@@ -25,7 +25,7 @@ const SongAdd = ({onAddClose}: {
   return (
     <>
       <Flex mt='3' direction={'column'} align={'stretch'}>
-        <Button onClick={onOpen} colorScheme='red'>Buscar en&nbsp;<Icon as={FaYoutube} />&nbsp;YouTube</Button>
+        <Button onClick={onOpen}>Buscar en&nbsp;<Icon as={FaYoutube} />&nbsp;YouTube</Button>
       </Flex>
 
       <Modal isOpen={isOpen} onClose={onClose} initialFocusRef={searchInput}>

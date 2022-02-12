@@ -30,7 +30,6 @@ const CommentAdd = ({comments, song}: { comments: Comments, song: Song}) => {
         <Flex mt='3' justify='right'>
           <Button
             type='submit'
-            colorScheme='red'
           >
             Añadir
           </Button>
