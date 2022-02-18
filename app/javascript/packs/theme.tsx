@@ -4,7 +4,7 @@ const theme = extendTheme({
   components: {
     Button: {
       defaultProps: {
-        colorScheme: 'red'
+        colorScheme: 'red',
       }
     },
     Checkbox: {

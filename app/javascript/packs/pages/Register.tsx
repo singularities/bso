@@ -7,7 +7,10 @@ import {
   Button,
   FormHelperText,
   Link,
-  FormErrorMessage
+  FormErrorMessage,
+  Container,
+  VStack,
+  Divider
 } from '@chakra-ui/react'
 
 import { useAuth } from '../components/Auth/Provider'
@@ -19,7 +22,7 @@ const RegisterPage = () => {
 
   let [errors, setErrors] = React.useState<any>({})
 
-  let from = location.state?.from?.pathname || "/";
+  let from = location.state?.from?.pathname || '/home'
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<any> => {
     event.preventDefault()
@@ -40,49 +43,48 @@ const RegisterPage = () => {
     setErrors(result)
   }
 
-  console.log(errors)
-
   return (
-    <>
+    <Container mt='8' mb='8'>
       <form onSubmit={handleSubmit}>
-        <FormControl isRequired isInvalid={errors.name}>
-          <FormLabel htmlFor="name">Nombre</FormLabel>
-          <Input
-            id="name"
-            name="name"
-            type="text"
-          />
-          <FormHelperText>El nombre con el que quieres aparecer</FormHelperText>
-          { errors.name && <FormErrorMessage>{errors.name.join(', ')}</FormErrorMessage> }
-        </FormControl>
-        <FormControl isRequired isInvalid={errors.email}>
-          <FormLabel htmlFor="email">Correo electrónico</FormLabel>
-          <Input
-            id="email"
-            name="email"
-            type="email"
-          />
-          { errors.email && <FormErrorMessage>{errors.email.join(', ')}</FormErrorMessage> }
-        </FormControl>
-        <FormControl isRequired isInvalid={errors.password}>
-          <FormLabel htmlFor="password">Contraseña</FormLabel>
-          <Input
-            id="password"
-            name="password"
-            type="password"
-          />
-          { errors.password && <FormErrorMessage>{errors.password.join(', ')}</FormErrorMessage> }
-        </FormControl>
-        <Button
-          type="submit"
-          width={'full'}
-          mt={2}
-        >
-          Registrarse
-        </Button>
+        <VStack spacing='4'>
+          <FormControl isRequired isInvalid={errors.name}>
+            <FormLabel htmlFor="name">Nombre</FormLabel>
+            <Input
+              id="name"
+              name="name"
+              type="text"
+            />
+            <FormHelperText>El nombre con el que quieres aparecer</FormHelperText>
+            { errors.name && <FormErrorMessage>{errors.name.join(', ')}</FormErrorMessage> }
+          </FormControl>
+          <FormControl isRequired isInvalid={errors.email}>
+            <FormLabel htmlFor="email">Correo electrónico</FormLabel>
+            <Input
+              id="email"
+              name="email"
+              type="email"
+            />
+            { errors.email && <FormErrorMessage>{errors.email.join(', ')}</FormErrorMessage> }
+          </FormControl>
+          <FormControl isRequired isInvalid={errors.password}>
+            <FormLabel htmlFor="password">Contraseña</FormLabel>
+            <Input
+              id="password"
+              name="password"
+              type="password"
+            />
+            { errors.password && <FormErrorMessage>{errors.password.join(', ')}</FormErrorMessage> }
+          </FormControl>
+          <Button
+            type="submit"
+          >
+            Registrarse
+          </Button>
+        </VStack>
       </form>
-      <Link as={ReactLink} to="/login">Ya tengo cuenta</Link>
-    </>
+      <Divider mt='4' mb='4'/>
+      ¿Ya te has registrado? <Link as={ReactLink} to="/login" color='red.400'>Entrar</Link>
+    </Container>
   )
 }
 
