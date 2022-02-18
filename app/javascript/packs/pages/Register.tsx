@@ -22,6 +22,10 @@ const RegisterPage = () => {
 
   let [errors, setErrors] = React.useState<any>({})
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   let from = location.state?.from?.pathname || '/home'
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<any> => {

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { VStack, Text, Button, Container } from '@chakra-ui/react'
+import { VStack, Text, Button, Container, Box } from '@chakra-ui/react'
 
 import Logo from './Logo'
 
@@ -19,10 +19,19 @@ const Front = () => {
         </Text>
         <Logo h="40vmin" pointerEvents="none" />
         <Text color="gray.500">
-          Marta cumple 40 años y reunir las canciones que nos han acompañado
-
+          <Box>
+            ¡Marta cumple 40 años!
+          </Box>
+          <Box>
+            Vamos a reunir las canciones que nos han acompañado.
+          <Box>
+          </Box>
+            Cuando piensas en Marta, ¿qué canción recuerdas?
+          </Box>
         </Text>
-        <Button size='lg' onClick={onClick}>Empezar</Button>
+        <Text color="gray.500">
+        </Text>
+        <Button size='lg' onClick={onClick}>Participar</Button>
       </VStack>
     </Container>
   )
