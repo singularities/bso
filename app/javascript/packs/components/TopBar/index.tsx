@@ -7,7 +7,7 @@ import AuthStatus from '../Auth/Status'
 
 const TopBar = () => {
   return (
-    <Container mt='2'>
+    <Container mt='2' borderBottomWidth='1px'>
       <Flex flexDirection='row' alignItems='center'>
         <Logo/>
         <Spacer />
@@ -16,7 +16,6 @@ const TopBar = () => {
         </Link>
         <AuthStatus />
       </Flex>
-
     </Container>
   )
 }

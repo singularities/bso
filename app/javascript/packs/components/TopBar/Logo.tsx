@@ -5,7 +5,7 @@ import {
 import logo from '../../assets/images/logo.svg'
 
 const Logo = () => {
-  return <Image boxSize='40px' src={logo} />
+  return <Image boxSize='32px' src={logo} />
 }
 
 export default Logo
