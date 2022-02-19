@@ -12,6 +12,8 @@ module Api
       user = User.new(user_params)
 
       if user.save
+        sign_in(:user, user)
+
         render json: user.as_json(
           only: %i[id name email]
         ), status: 201
