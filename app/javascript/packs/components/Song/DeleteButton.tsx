@@ -1,6 +1,18 @@
 import * as React from 'react'
-import { FaTrashAlt } from 'react-icons/fa'
-import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Button, IconButton } from '@chakra-ui/react'
+import {
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
+  Button,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList
+} from '@chakra-ui/react'
+import { FaChevronDown } from "react-icons/fa"
 
 import { useAuth } from '../Auth/Provider'
 import Song from '../../stores/models/Song'
@@ -22,12 +34,17 @@ const DeleteButton = ({song}: {song: Song}) => {
 
   return (
     <>
-      <IconButton
-        variant='ghost'
-        colorScheme='gray'
-        aria-label='Borrar'
-        onClick={onClick}
-        icon={<FaTrashAlt />} />
+      <Menu>
+        <MenuButton
+          as={Button}
+          rightIcon={<FaChevronDown />}
+          colorScheme='grey'
+          variant='ghost'>
+        </MenuButton>
+        <MenuList>
+          <MenuItem onClick={onClick}>Borrar</MenuItem>
+        </MenuList>
+      </Menu>
 
       <AlertDialog
         isOpen={isOpen}
