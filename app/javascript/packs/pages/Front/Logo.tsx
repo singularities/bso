@@ -6,7 +6,7 @@ import {
   forwardRef,
   usePrefersReducedMotion,
 } from '@chakra-ui/react'
-import logo from '../../assets/images/logo.svg'
+import logo from '../../../images/logo.svg'
 
 const spin = keyframes`
   from { transform: rotate(0deg); }
