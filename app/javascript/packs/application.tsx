@@ -18,6 +18,7 @@ const imagePath = (name) => images(name, true)
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
+import './sentry'
 import { App } from './App'
 
 document.addEventListener('DOMContentLoaded', () => {
