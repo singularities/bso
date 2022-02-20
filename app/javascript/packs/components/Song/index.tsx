@@ -4,6 +4,7 @@ import { AspectRatio, Box, Flex, Spacer } from '@chakra-ui/react'
 import Song from '../../stores/models/Song'
 import Comments from '../Comments'
 import Likes from '../Likes'
+import DeleteButton from './DeleteButton'
 
 const SongComponent = ({ song }: {song: Song}) => {
   return (
@@ -18,7 +19,8 @@ const SongComponent = ({ song }: {song: Song}) => {
         </iframe>
       </AspectRatio>
       <Box p='3'>
-        <Box
+        <Flex alignItems='center'>
+          <Box
             fontWeight='semibold'
             as='h4'
             lineHeight='tight'
@@ -26,6 +28,9 @@ const SongComponent = ({ song }: {song: Song}) => {
           >
             {song.get('title')}
           </Box>
+          <Spacer/>
+          <DeleteButton song={song} />
+        </Flex>
         <Flex mt='1' alignItems={'center'}>
           <Box as='span' color='gray.600' fontSize='sm'>
             Añadida por &nbsp;

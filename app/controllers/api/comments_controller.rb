@@ -23,6 +23,18 @@ module Api
       end
     end
 
+    def destroy
+      comment = Comment.find(params[:id])
+
+      raise "User can't delete other user's comment" unless comment.user_id == current_user.id
+
+      raise comment.errors unless comment.destroy
+
+      render json: comment.as_json(
+        only: %i[id user_id song_id text]
+      )
+    end
+
     private
 
     def comment_params

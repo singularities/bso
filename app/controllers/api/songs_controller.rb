@@ -19,6 +19,18 @@ module Api
       end
     end
 
+    def destroy
+      song = Song.find(params[:id])
+
+      raise "User can't delete other user's songs" unless song.user_id == current_user.id
+
+      raise song.errors unless song.destroy
+
+      render json: song.as_json(
+        only: %i[id title user_id youtube_id created_at]
+      )
+    end
+
     private
 
     def song_params

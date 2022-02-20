@@ -1,14 +1,18 @@
 import * as React from 'react'
-import { Box } from '@chakra-ui/react'
+import { Box, Flex, IconButton, Spacer } from '@chakra-ui/react'
 
 import Comment from '../../stores/models/Comment'
+import DeleteButton from './DeleteButton'
 
 const CommentComponent = ({comment}: {comment: Comment}) => {
+
   return (
     <Box>
-      <Box fontWeight='semibold' fontSize='sm'>
+      <Flex fontWeight='semibold' fontSize='sm' alignItems='center'>
         { comment.userName}
-      </Box>
+        <Spacer />
+        <DeleteButton comment={comment}/>
+      </Flex>
       <Box>
         { comment.get('text')}
       </Box>
