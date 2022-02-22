@@ -18,7 +18,7 @@ const Front = () => {
           Nuestra banda sonora con Marta
         </Text>
         <Logo h="40vmin" pointerEvents="none" />
-        <Text color="gray.500">
+        <Box color="gray.500">
           <Box>
             ¡Marta cumple 40 años!
           </Box>
@@ -28,9 +28,7 @@ const Front = () => {
           </Box>
             Cuando piensas en Marta, ¿qué canción recuerdas?
           </Box>
-        </Text>
-        <Text color="gray.500">
-        </Text>
+        </Box>
         <Button size='lg' onClick={onClick}>Participar</Button>
       </VStack>
     </Container>
