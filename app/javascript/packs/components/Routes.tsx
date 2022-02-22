@@ -6,23 +6,24 @@ import LoginPage from '../pages/Login'
 import RegisterPage from '../pages/Register'
 import HomePage from '../pages/Home'
 
-import RequireAuth from './Auth/Required'
+import AuthRequired from './Auth/Required'
+import AuthlessRequired from './Auth/AuthlessRequired'
 import { Collections } from './Collections'
 
 
 const AppRoutes = () => (
   <Routes>
-    <Route path="/" element={<FrontPage />} />
-    <Route path="/login" element={<LoginPage />} />
-    <Route path="/register" element={<RegisterPage />} />
+    <Route path="/" element={<AuthlessRequired><FrontPage /></AuthlessRequired>} />
+    <Route path="/login" element={<AuthlessRequired><LoginPage /></AuthlessRequired>} />
+    <Route path="/register" element={<AuthlessRequired><RegisterPage /></AuthlessRequired>} />
     <Route
       path="/home"
       element={
-        <RequireAuth>
+        <AuthRequired>
           <Collections>
             <HomePage />
           </Collections>
-        </RequireAuth>
+        </AuthRequired>
       }
     />
   </Routes>
