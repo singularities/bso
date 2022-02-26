@@ -22,12 +22,14 @@ const Add = ({ result, onAdd }: { result: SearchResult, onAdd: Function }) => {
 
     await song.save({}, { optimistic: false})
 
-    const comment = new Comment({
-      text: commentText,
-      song_id: song.id
-    })
+    if (commentText.length) {
+      const comment = new Comment({
+        text: commentText,
+        song_id: song.id
+      })
 
-    await comment.save({}, { optimistic: true})
+      await comment.save({}, { optimistic: true})
+    }
 
     setQuery('')
 
