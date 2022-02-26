@@ -7,8 +7,6 @@ import { useCollections } from '../Collections'
 import SongAdd from '../SongAdd'
 import { useSearch } from '../Search/Provider'
 
-const SEARCH_DELAY = 1000
-
 const SongsContainer = () => {
   const { songs } = useCollections()
   const { query } = useSearch()
@@ -26,11 +24,17 @@ const SongsContainer = () => {
       )
   }, [query, songsArray])
 
+  const onAdd = () => {
+    setTimeout(() => {
+      window.scrollTo(0, 0)
+    }, 2000)
+  }
+
   return (
     <>
       <Search />
       <Songs songs={filteredSongs}/>
-      <SongAdd />
+      <SongAdd onAdd={onAdd}/>
     </>
   )
 }

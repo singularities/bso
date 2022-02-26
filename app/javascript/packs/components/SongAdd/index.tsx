@@ -15,12 +15,17 @@ import { FaYoutube } from 'react-icons/fa'
 
 import Body from './Body'
 
-const SongAdd = ({onAddClose}: {
-  onAddClose: Function
+const SongAdd = ({onAdd}: {
+  onAdd: Function
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const searchInput: React.MutableRefObject<HTMLInputElement> =
     React.useRef<HTMLInputElement>(null)
+
+  const addAndClose = async () => {
+    onClose()
+    onAdd()
+  }
 
   return (
     <>
@@ -34,7 +39,7 @@ const SongAdd = ({onAddClose}: {
           <ModalHeader>Buscar en YouTube</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Body inputRef={searchInput} onAdd={onClose}/>
+            <Body inputRef={searchInput} onAdd={addAndClose}/>
           </ModalBody>
         </ModalContent>
       </Modal>
