@@ -1,0 +1,12 @@
+<p>
+  Hola <%= @user.name %>,
+
+<p>
+  <%= @comment.user.name %> ha dejado un comentario en la canción <%= @comment.song.title %>
+</p>
+
+<%= link_to 'Ver comentario', ENV['DEFAULT_HOST'], class: 'cta' %>
+
+<footer>
+  Nuestra banda sonora con Marta
+</footer>

@@ -5,6 +5,8 @@ on:
 env:
   DATABASE_URL: postgres://postgres:password@postgres:5432?pool=10
   RAILS_ENV: test
+  DEFAULT_HOST: https://example.com
+  MAIL_FROM: test@example.com
 
 jobs:
   specs:
