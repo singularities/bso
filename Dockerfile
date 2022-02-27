@@ -4,6 +4,8 @@ EXPOSE 3000
 
 WORKDIR /app
 
+RUN apt-get update && apt-get install -y youtube-dl
+
 # Mostly static
 COPY config.ru /app/
 COPY Rakefile /app/
