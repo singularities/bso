@@ -6,6 +6,7 @@ import Songs from '../Songs'
 import { useCollections } from '../Collections'
 import SongAdd from '../SongAdd'
 import { useSearch } from '../Search/Provider'
+import Mute from '../Mute'
 
 const SongsContainer = () => {
   const { songs } = useCollections()
@@ -35,6 +36,7 @@ const SongsContainer = () => {
       <Search />
       <Songs songs={filteredSongs}/>
       <SongAdd onAdd={onAdd}/>
+      <Mute />
     </>
   )
 }
