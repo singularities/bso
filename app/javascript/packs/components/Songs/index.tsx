@@ -8,17 +8,6 @@ import SongComponent from '../Song'
 
 const InitialSongCount = 3
 
-function arraysEqual(a: Array<Song>, b: Array<Song>) {
-  if (a === b) return true
-  if (a == null || b == null) return false
-  if (a.length !== b.length) return false
-
-  for (let i = 0; i < a.length; ++i) {
-    if (a[i] !== b[i]) return false
-  }
-  return true
-}
-
 const Songs = ({songs}: {songs: Array<Song>}) => {
   const [displayedSongs, setDisplayedSongs] = React.useState([])
   const [displayedSongsCount, setDisplayedSongsCount] = React.useState(InitialSongCount)

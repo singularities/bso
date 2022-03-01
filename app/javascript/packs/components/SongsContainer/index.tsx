@@ -7,6 +7,7 @@ import { useCollections } from '../Collections'
 import SongAdd from '../SongAdd'
 import { useSearch } from '../Search/Provider'
 import Mute from '../Mute'
+import PlayProvider from '../PlayProvider'
 
 const SongsContainer = () => {
   const { songs } = useCollections()
@@ -32,12 +33,12 @@ const SongsContainer = () => {
   }
 
   return (
-    <>
+    <PlayProvider>
       <Search />
       <Songs songs={filteredSongs}/>
       <SongAdd onAdd={onAdd}/>
       <Mute />
-    </>
+    </PlayProvider>
   )
 }
 

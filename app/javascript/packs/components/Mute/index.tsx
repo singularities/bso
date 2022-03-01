@@ -1,9 +1,10 @@
 import * as React from 'react'
 import { IconButton, Portal } from '@chakra-ui/react'
 import { FaVolumeMute, FaVolumeUp } from 'react-icons/fa'
+import { usePlay } from '../PlayProvider'
 
 const Mute = () => {
-  const [playing, setPlaying] = React.useState(false)
+  const { playing, setPlaying } = usePlay()
 
   return (
     <Portal>
