@@ -13,7 +13,7 @@ export default class Song extends Model {
     makeObservable(this, {
       user: computed,
       userName: computed,
-      embedUrl: computed
+      thumbnailUrl: computed
     })
   }
 
@@ -27,7 +27,7 @@ export default class Song extends Model {
     return this.user.get('name')
   }
 
-  get embedUrl () {
-    return `https://www.youtube.com/embed/${this.get('youtube_id')}`
+  get thumbnailUrl () {
+    return this.get('thumbnail_url') || ''
   }
 }

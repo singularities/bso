@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :api do
     resource :session, only: %i[show create destroy]
     resources :users, only: %i[index create]
-    resources :songs, only: %i[index create destroy]
+    resources :songs, only: %i[index show create destroy]
     resources :comments, only: %i[index create destroy]
     resources :likes, only: %i[index create destroy]
   end
@@ -10,5 +10,9 @@ Rails.application.routes.draw do
   devise_for :user
 
   root 'frontpage#index'
-  match '*path' => 'frontpage#index', via: :all
+  match '*path' => 'frontpage#index',
+        via: :all,
+        constraints: lambda { |request|
+          request.path.exclude? 'rails/active_storage'
+        }
 end

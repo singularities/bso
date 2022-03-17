@@ -3,6 +3,7 @@ class Song < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :commenters, -> { distinct }, through: :comments, source: :user
   has_many :likes, dependent: :destroy
+  has_one_attached :thumbnail
   has_one_attached :video
 
   after_commit :download_video, on: :create

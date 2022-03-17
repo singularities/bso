@@ -36,7 +36,7 @@ const Songs = ({songs}: {songs: Array<Song>}) => {
   }
 
   return (
-    <VStack spacing={8} mt='3' align='stretch'>
+    <VStack mt='3' align='stretch'>
       <InfiniteScroll
         dataLength={displayedSongs.length}
         next={fetchMoreSongs}

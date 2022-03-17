@@ -29,7 +29,7 @@ const SongAdd = ({onAdd}: {
 
   return (
     <>
-      <Flex mt='3' direction={'column'} align={'stretch'}>
+      <Flex direction={'column'} align={'stretch'}>
         <Button onClick={onOpen}>Buscar en&nbsp;<Icon as={FaYoutube} />&nbsp;YouTube</Button>
       </Flex>
 
