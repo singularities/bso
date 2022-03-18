@@ -4,7 +4,7 @@ import Song from '../../stores/models/Song'
 import { usePlay } from '../PlayProvider'
 
 const BEGINING = 10
-const END = 30
+const END = 60
 
 const Video = ({ song }: {song: Song}) => {
   const { playing } = usePlay()
