@@ -1,23 +1,17 @@
 import * as React from 'react'
-import { Outlet, Link as ReactLink } from 'react-router-dom'
-import { Link } from '@chakra-ui/react'
+import { Outlet } from 'react-router-dom'
+import { Box } from '@chakra-ui/react'
 
-import AuthStatus from './Auth/Status'
-
+import Topbar from './TopBar'
 
 const Layout = () => {
   return (
-    <div>
-      <AuthStatus />
-
-      <ul>
-        <li>
-          <Link as={ReactLink} to="/">Home</Link>
-        </li>
-      </ul>
-
-      <Outlet />
-    </div>
+    <>
+      <Topbar />
+      <Box p="3">
+        <Outlet />
+      </Box>
+    </>
   )
 }
 

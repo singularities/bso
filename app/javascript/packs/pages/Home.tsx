@@ -9,14 +9,9 @@ import SearchProvider from "../components/Search/Provider"
 
 const HomePage = () => {
   return (
-    <>
-      <TopBar />
-      <Box p="3">
-        <SearchProvider>
-          <SongsContainer/>
-        </SearchProvider>
-      </Box>
-    </>
+    <SearchProvider>
+      <SongsContainer/>
+    </SearchProvider>
   )
 }
 

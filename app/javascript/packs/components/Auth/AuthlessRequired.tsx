@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { Navigate, useLocation } from 'react-router-dom'
+import { Navigate, Outlet, useLocation } from 'react-router-dom'
 
 import { useAuth } from './Provider'
 
-const AuthlessRequired = ({ children }: { children: JSX.Element }) => {
+const AuthlessRequired = () => {
   let auth = useAuth()
   let location = useLocation()
 
@@ -15,7 +15,7 @@ const AuthlessRequired = ({ children }: { children: JSX.Element }) => {
     return <Navigate to="/home" state={{ from: location }} replace />
   }
 
-  return children
+  return <Outlet />
 }
 
 export default AuthlessRequired
