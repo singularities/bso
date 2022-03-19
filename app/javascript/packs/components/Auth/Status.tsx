@@ -1,7 +1,7 @@
 import * as React from "react"
 import { useNavigate } from "react-router-dom"
 import { Box, Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react"
-import { FaChevronDown } from "react-icons/fa"
+import { FaBars } from "react-icons/fa"
 
 import { useAuth } from "./Provider"
 
@@ -24,12 +24,12 @@ const AuthStatus = () => {
       <Menu>
         <MenuButton
           as={Button}
-          rightIcon={<FaChevronDown />}
+          rightIcon={<FaBars />}
           colorScheme='blackAlpha'
           variant='ghost'>
-          {auth.user().name}
         </MenuButton>
         <MenuList>
+          <MenuItem>{auth.user().name}</MenuItem>
           <MenuItem onClick={logout}>Salir</MenuItem>
         </MenuList>
       </Menu>
