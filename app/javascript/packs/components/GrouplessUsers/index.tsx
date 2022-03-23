@@ -1,10 +1,11 @@
 import * as React from 'react'
 import { observer } from 'mobx-react'
-import { Box, Heading, ListItem, UnorderedList } from '@chakra-ui/react'
+import { Box, Flex, Heading, ListItem, Spacer, UnorderedList } from '@chakra-ui/react'
 
 import { useAuth } from '../Auth/Provider'
 import { useCollections } from '../Collections'
 import MembershipsCollection from '../../stores/collections/Memberships'
+import AddGroup from './AddGroup'
 
 const GrouplessUsers = () => {
   const auth = useAuth()
@@ -17,10 +18,21 @@ const GrouplessUsers = () => {
     ) === undefined
   )
 
+  const userIsGroupless =
+    grouplessUsers.find(user =>
+      user.get('id') === userId
+    ) !== undefined
+
+  if (grouplessUsers.length === 0) return null
+
   return (
     <Box mt='4'>
       <Heading size='lg' color='gray'>
-        Sin grupo
+        <Flex alignItems='center'>
+          <Box>En ningún grupo</Box>
+          <Spacer/>
+          <AddGroup userIsGroupless={userIsGroupless} />
+        </Flex>
       </Heading>
       <UnorderedList>
         {grouplessUsers.map(user => (

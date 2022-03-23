@@ -35,6 +35,7 @@ const MembershipButton = (
     isMember ?
       <IconButton
         variant='outline'
+        size='sm'
         aria-label='Abandonar grupo'
         onClick={leave}
         icon={<FaUserMinus />}
@@ -42,6 +43,7 @@ const MembershipButton = (
     :
       <IconButton
         variant='outline'
+        size='sm'
         aria-label='Unirse al grupo'
         onClick={join}
         icon={<FaUserPlus />}

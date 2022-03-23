@@ -18,8 +18,6 @@ export default class Membership extends Model {
   }
 
   get user () {
-    console.log('user')
-    console.log(usersCollection.get(this.get('user_id')))
     return usersCollection.get(this.get('user_id'))
   }
   get group () {

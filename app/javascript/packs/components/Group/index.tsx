@@ -16,7 +16,7 @@ const GroupComponent = (
   return (
     <Box>
       <Heading size='lg' color='red.400'>
-        <Flex>
+        <Flex alignItems='center'>
           <Box>{group.get('name')}</Box>
           <Spacer/>
           <MembershipButton

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :songs, only: %i[index show create destroy]
     resources :comments, only: %i[index create destroy]
     resources :likes, only: %i[index create destroy]
-    resources :groups, only: %i[index]
+    resources :groups, only: %i[index create]
     resources :memberships, only: %i[index create destroy]
   end
 
