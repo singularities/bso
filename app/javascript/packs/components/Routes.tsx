@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Routes, Route } from 'react-router-dom'
+import { Container } from '@chakra-ui/react'
 
 import FrontPage from '../pages/Front'
 import LoginPage from '../pages/Login'
@@ -15,7 +16,11 @@ import Layout from './Layout'
 
 const AppRoutes = () => (
   <Routes>
-    <Route path="/" element={<AuthlessRequired />}>
+    <Route path="/" element={
+      <Container my='8'>
+        <AuthlessRequired />
+      </Container>
+    }>
       <Route index element={<FrontPage />} />
       <Route path="login" element={<LoginPage />} />
       <Route path="register" element={<RegisterPage />} />

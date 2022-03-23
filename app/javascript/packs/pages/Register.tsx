@@ -48,7 +48,7 @@ const RegisterPage = () => {
   }
 
   return (
-    <Container mt='8' mb='8'>
+    <>
       <form onSubmit={handleSubmit}>
         <VStack spacing='4'>
           <FormControl isRequired isInvalid={errors.name}>
@@ -88,7 +88,7 @@ const RegisterPage = () => {
       </form>
       <Divider mt='4' mb='4'/>
       ¿Ya te has registrado? <Link as={ReactLink} to="/login" color='red.400'>Entrar</Link>
-    </Container>
+    </>
   )
 }
 

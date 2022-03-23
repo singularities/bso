@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useLocation, Link as ReactLink } from 'react-router-dom'
-import { Container, Flex, Icon, Link, Spacer } from '@chakra-ui/react'
+import { Box, Container, Flex, Icon, Link, Spacer } from '@chakra-ui/react'
 import { FaWhatsapp } from 'react-icons/fa'
 
 import Logo from './Logo'
@@ -17,7 +17,7 @@ const TopBar = () => {
   }
 
   return (
-    <Container mt='2' borderBottomWidth='1px'>
+    <Box borderBottomWidth='1px'>
       <Flex flexDirection='row' alignItems='center'>
         <Link as={ReactLink} to="/home">
           <Logo/>
@@ -42,7 +42,7 @@ const TopBar = () => {
         </Link>
         <AuthStatus />
       </Flex>
-    </Container>
+    </Box>
   )
 }
 

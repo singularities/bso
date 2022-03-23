@@ -45,7 +45,7 @@ const LoginPage = () => {
   }
 
   return (
-    <Container mt='8' mb='8'>
+    <>
       <form onSubmit={handleSubmit}>
         <VStack spacing='4'>
           { errors.base && <FormErrorMessage>{errors.base.join(', ')}</FormErrorMessage> }
@@ -78,7 +78,7 @@ const LoginPage = () => {
       </form>
       <Divider mt='4' mb='4'/>
       ¿Aún no te has registrado? <Link as={ReactLink} to="/register" color='red.400'>Registrarse</Link>
-    </Container>
+    </>
   )
 }
 

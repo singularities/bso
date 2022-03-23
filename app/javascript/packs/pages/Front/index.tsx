@@ -12,7 +12,7 @@ const Front = () => {
   }
 
   return (
-    <Container textAlign="center" fontSize="xl">
+    <Box textAlign="center" fontSize="xl">
       <VStack spacing={8} mt='8' mb='8'>
         <Text fontSize="2xl" color="red.500">
           Nuestra banda sonora con Marta
@@ -31,7 +31,7 @@ const Front = () => {
         </Box>
         <Button size='lg' onClick={onClick}>Participar</Button>
       </VStack>
-    </Container>
+    </Box>
   )
 }
 

@@ -1,17 +1,17 @@
 import * as React from 'react'
 import { Outlet } from 'react-router-dom'
-import { Box } from '@chakra-ui/react'
+import { Box, Container } from '@chakra-ui/react'
 
 import Topbar from './TopBar'
 
 const Layout = () => {
   return (
-    <>
+    <Container my={2}>
       <Topbar />
-      <Box p="3">
+      <Box mt={3}>
         <Outlet />
       </Box>
-    </>
+    </Container>
   )
 }
 
