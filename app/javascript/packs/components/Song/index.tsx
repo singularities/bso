@@ -48,8 +48,9 @@ const SongComponent = ({ song }: {song: Song}) => {
       with='100%'
       borderWidth='1px'
       borderRadius='lg'
-      overflow='hidden'>
-      <AspectRatio maxW='100%' ratio={16 / 9} ref={ref}>
+      overflow='hidden'
+      ref={ref}>
+      <AspectRatio maxW='100%' ratio={16 / 9}>
         { hasVideo && isCurrentSong() ? (
           <Video song={song} />
         ) : (
