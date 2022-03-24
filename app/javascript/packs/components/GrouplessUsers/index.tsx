@@ -29,7 +29,7 @@ const GrouplessUsers = () => {
     <Box mt='4'>
       <Heading size='lg' color='gray'>
         <Flex alignItems='center'>
-          <Box>En ningún grupo</Box>
+          <Box>Otros</Box>
           <Spacer/>
           <AddGroup userIsGroupless={userIsGroupless} />
         </Flex>
