@@ -1,5 +1,6 @@
 import * as React from 'react'
 import {
+  Box,
   Button,
   Flex,
   Icon,
@@ -28,7 +29,7 @@ const SongAdd = ({onAdd}: {
   }
 
   return (
-    <>
+    <Box mt={2}>
       <Flex direction={'column'} align={'stretch'}>
         <Button onClick={onOpen}>Buscar en&nbsp;<Icon as={FaYoutube} />&nbsp;YouTube</Button>
       </Flex>
@@ -43,7 +44,7 @@ const SongAdd = ({onAdd}: {
           </ModalBody>
         </ModalContent>
       </Modal>
-    </>
+    </Box>
   )
 }
 
