@@ -8,9 +8,13 @@ import {
   FormHelperText,
   FormErrorMessage,
   VStack,
+  Select,
 } from '@chakra-ui/react'
 
 import { useAuth } from '../Auth/Provider'
+import Group from '../../stores/models/Group'
+import GroupCollection from '../../stores/collections/Groups'
+import MembershipsCollection from '../../stores/collections/Memberships'
 
 const Register = () => {
   let navigate = useNavigate()
@@ -18,6 +22,17 @@ const Register = () => {
   let auth = useAuth()
 
   let [errors, setErrors] = React.useState<any>({})
+  let [groups, setGroups] = React.useState<Array<Group>>([])
+
+  React.useEffect(() => {
+    const fetchGroups = async () => {
+      await GroupCollection.fetch()
+
+      setGroups(GroupCollection.toArray())
+    }
+
+    fetchGroups()
+  }, [])
 
   let from = location.state?.from?.pathname || '/home'
 
@@ -32,6 +47,14 @@ const Register = () => {
     const result = await auth.register(name, email, password)
 
     if (auth.isAuthenticated()) {
+      const groupId = formData.get('groupId') as string
+
+      if (groupId !== ' ') {
+        await MembershipsCollection.create({
+          group_id: groupId
+        }, { optimistic: false })
+      }
+
       navigate(from, { replace: true });
 
       return
@@ -70,6 +93,16 @@ const Register = () => {
             type="password"
           />
           { errors.password && <FormErrorMessage>{errors.password.join(', ')}</FormErrorMessage> }
+        </FormControl>
+        <FormControl>
+          <FormLabel htmlFor="groupId">Grupo</FormLabel>
+          <Select name='groupId' id='groupId'>
+            <option key=' ' value=' '> </option>
+            { groups.map(
+                group => <option key={group.get('id')} value={group.get('id')}>{group.get('name')}</option>
+              )
+            }
+          </Select>
         </FormControl>
         <Button
           type="submit"
