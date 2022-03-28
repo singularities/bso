@@ -1,5 +1,7 @@
 module Api
   class GroupsController < ApplicationController
+    skip_before_action :authenticate_user!, only: :index
+
     def index
       render json: (
         Group.all.map do |group|
