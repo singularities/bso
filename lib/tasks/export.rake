@@ -34,5 +34,14 @@ namespace :export do
 
   desc 'Export videos'
   task videos: :environment do
+    Song.all.each do |song|
+      filename = Rails.root.join('storage', 'videos', "#{song.id}-#{song.title.parameterize}-#{song.user.name.parameterize}.mp4")
+
+      song.video.open do |file|
+        File.open(filename, 'wb') do |f|
+          f.write(file.read)
+        end
+      end
+    end
   end
 end
